@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logoStarWars from "../../img/logoStarWars.png";
+import { Single } from "../views/single";
 
 export const Navbar = () => {
 	return (
@@ -11,7 +12,7 @@ export const Navbar = () => {
 				</span>
 			</Link>
 			<div className="ml-auto">
-				<Link to="/single">
+				<Link to="/demo">
 					<button className="btn btn-primary">Check the Context in action</button>
 				</Link>
 			</div>
