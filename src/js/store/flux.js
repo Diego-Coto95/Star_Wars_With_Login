@@ -1,9 +1,31 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			people: [],
+
+			planets: [],
+
+			favorites: []
+		},
+		actions: {
+			loadPeople: async () => {
+				const url = "https://swapi.dev/api/people/";
+				const response = await fetch(url);
+				const data = await response.json();
+				console.table(data);
+				setStore({ people: data.results });
+			},
+
+			loadPlanet: async () => {
+				const url = "https://swapi.dev/api/planets/";
+				const response = await fetch(url);
+				const data = await response.json();
+				console.table(data);
+				setStore({ planets: data.results });
+			}
+			/*        features: [
 				{
-					title: "FIRST",
+					name: "FIRST",
 					background: "white",
 					initial: "white"
 				},
@@ -12,33 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
-		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				fetch("https://www.swapi.tech/api/planets")
-					.then(res => res.json())
-					.then(data => console.log(data))
-					.catch(err => console.error(err));
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
+			]*/
 		}
 	};
 };

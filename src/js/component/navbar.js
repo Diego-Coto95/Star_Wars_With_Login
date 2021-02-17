@@ -8,7 +8,7 @@ export const Navbar = () => {
 		<nav className="navbar navbar-light bg-dark mb-1">
 			<Link to="/">
 				<span className="navbar-brand mb-0 ml-5 h1">
-					<img className="LOGO  bg-light" src={logoStarWars} alt="MORA" />
+					<img className="LOGO  bg-light" src={logoStarWars} alt="LOGO" />
 				</span>
 			</Link>
 			<div className="ml-auto">

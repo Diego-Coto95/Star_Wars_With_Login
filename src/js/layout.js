@@ -3,13 +3,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import { DescriptionPeople } from "./views/descriptionPeople";
+import { DescriptionPlanets } from "./views/descriptionPlanets";
 import { Demo } from "./views/demo";
-import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { People } from "./component/people";
-import { DescriptionPeople } from "./component/descriptionPeople";
 import { Planets } from "./component/planets";
 import { Footer } from "./component/footer";
 
@@ -31,9 +31,6 @@ const Layout = () => {
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
-						<Route path="/single/:theid">
-							<Single />
-						</Route>
 						<Route exact path="/people/:theid">
 							<People />
 						</Route>
@@ -42,6 +39,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/planets/:theid">
 							<Planets />
+						</Route>
+						<Route exact path="/descriptionPlanets/:theid">
+							<DescriptionPlanets />
 						</Route>
 					</Switch>
 					<Footer />
