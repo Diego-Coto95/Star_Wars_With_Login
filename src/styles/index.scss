@@ -7,6 +7,7 @@
 }
 
 body{
-background: rgb(88,97,142);
-background: linear-gradient(211deg, rgba(88,97,142,1) 17%, rgba(141,149,187,1) 24%, rgba(66,69,99,1) 40%, rgba(61,61,83,1) 48%, rgba(98,98,153,1) 66%, rgba(73,73,87,1) 89%);
+    background-repeat: no-repeat;
+background: rgb(135,132,136);
+background: radial-gradient(circle, rgba(135,132,136,1) 0%, rgba(116,85,85,1) 50%, rgba(190,157,111,1) 100%);
 }

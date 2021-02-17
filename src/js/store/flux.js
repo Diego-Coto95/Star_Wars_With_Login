@@ -8,33 +8,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: []
 		},
 		actions: {
+			// Use getActions to call a function within a fuction
 			loadPeople: async () => {
 				const url = "https://swapi.dev/api/people/";
 				const response = await fetch(url);
-				const data = await response.json();
-				console.table(data);
-				setStore({ people: data.results });
+				const info = await response.json();
+				setStore({ people: info.results });
 			},
 
 			loadPlanet: async () => {
 				const url = "https://swapi.dev/api/planets/";
 				const response = await fetch(url);
-				const data = await response.json();
-				console.table(data);
-				setStore({ planets: data.results });
+				const info = await response.json();
+				setStore({ planets: info.results });
 			}
-			/*        features: [
-				{
-					name: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]*/
 		}
 	};
 };

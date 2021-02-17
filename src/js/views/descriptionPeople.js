@@ -5,7 +5,7 @@ import { Card, Container, Table, CardImg, Button, Image, Col, Row } from "react-
 
 export const DescriptionPeople = () => {
 	return (
-		<div className="mt-5">
+		<div className="mt-5 text-center">
 			<Container>
 				<Row>
 					<Col xs={6} md={5}>
