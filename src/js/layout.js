@@ -35,13 +35,13 @@ const Layout = () => {
 						<People info={store.people} />
 					</Route>
 					<Route exact path="/descriptionPeople/:theid">
-						<DescriptionPeople info={store.people} />
+						<DescriptionPeople />
 					</Route>
 					<Route exact path="/planets/:theid">
 						<Planets info={store.planets} />
 					</Route>
 					<Route exact path="/descriptionPlanets/:theid">
-						<DescriptionPlanets info={store.planets} />
+						<DescriptionPlanets />
 					</Route>
 				</Switch>
 				<Footer />
