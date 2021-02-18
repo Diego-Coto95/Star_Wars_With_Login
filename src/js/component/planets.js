@@ -2,11 +2,9 @@ import React, { useContext } from "react";
 import "../../styles/index.scss";
 import { Link } from "react-router-dom";
 import { Card, ButtonToolbar, CardGroup, Button } from "react-bootstrap";
-import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 export const Planets = props => {
-	const { store, actions } = useContext(Context);
 	return (
 		<div className="container d-flex flex-column text-center">
 			<div className="mt-5 d-flex" style={{ overflowX: "scroll", width: "1100px", height: "550px" }}>

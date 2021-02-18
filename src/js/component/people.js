@@ -1,13 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Card, Container, CardDeck, Button, Row, Col, ButtonToolbar } from "react-bootstrap";
-import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "../../styles/index.scss";
 
 export const People = props => {
-	const { store, actions } = useContext(Context);
-	//const [searchElement, setSearchElement] = useState();
 	return (
 		<Container className="container" fluid>
 			<Row>
