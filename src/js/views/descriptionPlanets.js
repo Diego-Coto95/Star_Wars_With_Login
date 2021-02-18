@@ -2,79 +2,99 @@ import React from "react";
 import "../../styles/index.scss";
 import { Link } from "react-router-dom";
 import { Card, Container, Table, CardImg, Button, Image, Col, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 
-export const DescriptionPlanets = () => {
+export const DescriptionPlanets = props => {
 	return (
 		<div className="mt-5">
 			<Container>
-				<Row>
-					<Col xs={6} md={5}>
-						<Image
-							className=" w-100 h-100"
-							src="https://images.unsplash.com/photo-1593974751347-9a2e8e9afeb6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80"
-							style={{ width: "100px", height: "100px" }}
-							rounded
-						/>
-					</Col>
+				{props.info.map((element, index) => {
+					return (
+						<div key={index}>
+							<Row>
+								<Col xs={6} md={5}>
+									<Image
+										className=" w-100 h-100"
+										src="https://images.unsplash.com/photo-1593974751347-9a2e8e9afeb6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80"
+										style={{ width: "100px", height: "100px" }}
+										rounded
+									/>
+								</Col>
 
-					<Col xs={6} md={4}>
-						<div>
-							<Card border="light" style={{ width: "40rem" }}>
-								<div className="text-center">
-									<Card.Header>Character</Card.Header>
-								</div>
-								<Card.Body>
-									<div className="text-center">
-										<Card.Title>Title</Card.Title>
+								<Col xs={6} md={4}>
+									<div>
+										<Card border="light" style={{ width: "40rem" }}>
+											<div className="text-center">
+												<Card.Header>
+													<strong>Planets</strong>
+												</Card.Header>
+											</div>
+											<Card.Body>
+												<div className="text-center">
+													<Card.Title>{element.name}</Card.Title>
+												</div>
+												<Card.Text>
+													La saga de George Lucas revolucionó por completo los «efectos
+													especiales». El guión incluía decenas de astronaves, criaturas y
+													objetos inventados como las «espadas láser», el cineasta tuvo que
+													reunir a los mejores especialistas en efectos visuales de Hollywood,
+													que hicieron un trabajo sorprendente, teniendo en cuenta que en la
+													época los ordenadores no eran tan comunes ni avanzados como los de
+													ahora.
+													<br />
+													Utilizaron maquetas y muñecos de látex que en cierto sentido tienen
+													más encanto que las criaturas del cine moderno, pues aunque son
+													mucho más limitados, tienen textura real, y están ahí, delante de la
+													cámara. El potencial de los técnicos reunidos para la cinta era tan
+													grande que Lucas fundó una compañía, Industrial Light & Magic,
+													especializada en hacer todo tipo de efectos para cualquier película.
+												</Card.Text>
+											</Card.Body>
+										</Card>
+										<br />
 									</div>
-									<Card.Text>
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-										Ipsum has been the industrys standard dummy text ever since the 1500s, when an
-										unknown printer took a galley of type and scrambled it to make a type specimen
-										book. It has survived not only five centuries, but also the leap into electronic
-										typesetting, remaining essentially unchanged. It was popularised in the 1960s
-										with the release of Letraset sheets containing Lorem Ipsum passages, and more
-										recently with desktop publishing software like Aldus PageMaker including
-										versions of Lorem Ipsum
-									</Card.Text>
-								</Card.Body>
-							</Card>
+								</Col>
+							</Row>
+							<hr className="border border-bottom-0.5" />
+							<div>
+								<Table responsive>
+									<thead className="text-white">
+										<tr>
+											<th>Name</th>
+											<th>Climate</th>
+											<th>Population</th>
+											<th>Orbital Period</th>
+											<th>Rotation Period</th>
+											<th>Diameter</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr className="text-white">
+											<td>{element.name}</td>
+											<td>{element.climate}</td>
+											<td>{element.population}</td>
+											<td>{element.orbital_period}</td>
+											<td>{element.rotation_period}</td>
+											<td>{element.diameter}</td>
+										</tr>
+									</tbody>
+								</Table>
+							</div>
 							<br />
+							<div className="col text-center">
+								<Link to="/">
+									<button className="btn btn-primary">Back home</button>
+								</Link>
+							</div>
 						</div>
-					</Col>
-				</Row>
-				<hr className="border border-bottom-0.5" />
-				<div>
-					<Table responsive>
-						<thead className="text-white">
-							<tr>
-								<th>Name</th>
-								<th>Climate</th>
-								<th>Population</th>
-								<th>Orbital Period</th>
-								<th>Rotation Period</th>
-								<th>Diameter</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr className="text-white">
-								<td>...</td>
-								<td>...</td>
-								<td>...</td>
-								<td>...</td>
-								<td>...</td>
-								<td>...</td>
-							</tr>
-						</tbody>
-					</Table>
-				</div>
-				<br />
-				<div className="col text-center">
-					<Link to="/">
-						<button className="btn btn-primary">Back home</button>
-					</Link>
-				</div>
+					);
+				})}
 			</Container>
 		</div>
 	);
+};
+
+DescriptionPlanets.propTypes = {
+	info: PropTypes.string
 };

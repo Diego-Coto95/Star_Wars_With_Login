@@ -33,7 +33,7 @@ export const Planets = props => {
 								<ButtonToolbar
 									className="justify-content-between"
 									arial-label="Toolbar with Button groups">
-									<Link to="/descriptionPlanets/whatever">
+									<Link to={`/descriptionPlanets/${index}`}>
 										<Button variant="primary">Learn More!</Button>
 									</Link>
 									<Link>

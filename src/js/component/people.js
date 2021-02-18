@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Card, Container, CardDeck, Button, Row, Col, ButtonToolbar } from "react-bootstrap";
+import { Card, Container, Button, Row, Col, ButtonToolbar } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "../../styles/index.scss";
@@ -34,7 +34,7 @@ export const People = props => {
 									<ButtonToolbar
 										className="justify-content-between"
 										arial-label="Toolbar with Button groups">
-										<Link to="/descriptionPeople/whatever">
+										<Link to={`/descriptionPeople/${index}`}>
 											<Button variant="primary">Learn More!</Button>
 										</Link>
 										<Link>
