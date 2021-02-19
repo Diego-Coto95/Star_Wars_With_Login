@@ -3,8 +3,12 @@ import { Card, Container, Button, Row, Col, ButtonToolbar } from "react-bootstra
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "../../styles/index.scss";
+import { Context } from "../store/appContext";
 
 export const People = props => {
+	const { store, actions } = useContext(Context);
+	const [searchItem, setSearch] = useState();
+
 	return (
 		<Container className="container" fluid>
 			<Row>
@@ -33,11 +37,11 @@ export const People = props => {
 								<Card.Footer>
 									<ButtonToolbar
 										className="justify-content-between"
-										arial-label="Toolbar with Button groups">
+										aria-label="Toolbar with Button groups">
 										<Link to={`/descriptionPeople/${index}`}>
-											<Button variant="primary">Learn More!</Button>
+											<Button variant="primary">Learn More</Button>
 										</Link>
-										<Link>
+										<Link onClick={() => actions.addFavorite(element.name, "people")}>
 											<Button variant="outline-warning">
 												<i className="far fa-heart" />
 											</Button>

@@ -1,24 +1,54 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logoStarWars from "../../img/logoStarWars.png";
-import { Single } from "../views/single";
-import { DropdownButton, Dropdown } from "react-bootstrap";
+import { DropdownButton, Dropdown, Navbar, ButtonGroup } from "react-bootstrap";
+import { Context } from "../store/appContext";
 
-export const Navbar = () => {
+export const Menu = () => {
+	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-light bg-dark mb-1">
+		<Navbar bg="dark">
 			<Link to="/">
-				<span className="navbar-brand mb-0 ml-5 h1">
-					<img className="LOGO  bg-light" src={logoStarWars} alt="LOGO" />
-				</span>
+				<Navbar.Brand href="#home">
+					<span className="navbar-brand mb-0 ml-5 h1">
+						<img className="LOGO  bg-light" src={logoStarWars} alt="LOGO" />
+					</span>
+				</Navbar.Brand>
 			</Link>
-			<div className="ml-5">
-				<DropdownButton id="dropdown-basic-button" title="Favorites">
-					<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-					<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-					<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+			<Navbar.Toggle />
+			<Navbar.Collapse className="justify-content-end mr-5">
+				<DropdownButton drop={"left"} variant="dark" title={"Favorites " + store.favorites.length}>
+					{store.favorites.length == 0 ? (
+						<Dropdown.Item>Empty</Dropdown.Item>
+					) : (
+						store.favorites.map((favorite, i) => {
+							return (
+								<Dropdown.Item eventKey={i} key={i} onClick={() => actions.deleteFavorite(i)}>
+									{favorite.type == "people" ? (
+										<div>
+											<i className="fas fa-id-card">
+												&nbsp;
+												{favorite.name}
+											</i>
+											&nbsp;&nbsp;&nbsp;
+											<i className="far fa-trash-alt" />
+										</div>
+									) : (
+										<div>
+											<i className="fas fa-globe-americas">
+												&nbsp;
+												{favorite.name}
+											</i>
+											&nbsp;&nbsp;&nbsp;
+											<i className="far fa-trash-alt" />
+										</div>
+									)}
+								</Dropdown.Item>
+							);
+						})
+					)}
 				</DropdownButton>
-			</div>
-		</nav>
+			</Navbar.Collapse>
+		</Navbar>
 	);
 };

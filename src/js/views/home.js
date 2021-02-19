@@ -2,9 +2,9 @@ import React from "react";
 import "../../styles/index.scss";
 import { Link } from "react-router-dom";
 import { Carousel, CarouselItem, CarouselItemProps, CarouselProps, Caption } from "react-bootstrap";
-//{${variable : id}}
+
 export const Home = () => (
-	<div className="container text-center mt-5">
+	<div className="container text-center mt-4">
 		<Carousel>
 			<Carousel.Item interval={2000}>
 				<Link to="/people/whatever">

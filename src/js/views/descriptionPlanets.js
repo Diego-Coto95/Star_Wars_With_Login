@@ -3,23 +3,22 @@ import "../../styles/index.scss";
 import { Link } from "react-router-dom";
 import { Card, Container, Table, CardImg, Button, Image, Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
-export const DescriptionPlanets = props => {
+export const DescriptionPlanets = () => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
 	const element = store.planets[params.theid];
 
 	return (
-		<div className="mt-5">
+		<div className="mt-4">
 			<Container>
 				<Row>
 					<Col xs={6} md={5}>
 						<Image
 							className=" w-100 h-100"
 							src="https://images.unsplash.com/photo-1593974751347-9a2e8e9afeb6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80"
-							style={{ width: "100px", height: "100px" }}
+							style={{ width: "100px", height: "100px", boxShadow: "8px 6px 15px #9e9e9e" }}
 							rounded
 						/>
 					</Col>
@@ -84,14 +83,11 @@ export const DescriptionPlanets = props => {
 				</div>
 				<br />
 				<div className="col text-center">
-					<Link to="/">
-						<button className="btn btn-primary">Back home</button>
+					<Link to="/planets/home">
+						<button className="btn btn-primary">Back Planets</button>
 					</Link>
 				</div>
 			</Container>
 		</div>
 	);
-};
-DescriptionPlanets.propTypes = {
-	info: PropTypes.string
 };

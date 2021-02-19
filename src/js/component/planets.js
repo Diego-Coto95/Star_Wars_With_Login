@@ -1,13 +1,17 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import "../../styles/index.scss";
 import { Link } from "react-router-dom";
 import { Card, ButtonToolbar, CardGroup, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 
 export const Planets = props => {
+	const { store, actions } = useContext(Context);
+	const [searchItem, setSearch] = useState();
+
 	return (
 		<div className="container d-flex flex-column text-center">
-			<div className="mt-5 d-flex" style={{ overflowX: "scroll", width: "1100px", height: "550px" }}>
+			<div className="Main mt-5 d-flex" style={{ overflowX: "scroll", width: "1100px", height: "550px" }}>
 				{props.info.map((element, index) => {
 					return (
 						<Card style={{ minWidth: "20rem", margin: "15px" }} key={index}>
@@ -32,11 +36,11 @@ export const Planets = props => {
 							<Card.Footer>
 								<ButtonToolbar
 									className="justify-content-between"
-									arial-label="Toolbar with Button groups">
+									aria-label="Toolbar with Button groups">
 									<Link to={`/descriptionPlanets/${index}`}>
-										<Button variant="primary">Learn More!</Button>
+										<Button variant="primary">Learn More</Button>
 									</Link>
-									<Link>
+									<Link onClick={() => actions.addFavorite(element.name, "planet")}>
 										<Button variant="outline-warning">
 											<i className="far fa-heart" />
 										</Button>

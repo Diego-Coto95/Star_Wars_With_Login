@@ -3,10 +3,9 @@ import "../../styles/index.scss";
 import { Link } from "react-router-dom";
 import { Card, Container, Table, CardImg, Button, Image, Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 
-export const DescriptionPeople = props => {
+export const DescriptionPeople = () => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
 	const element = store.people[params.theid];
@@ -19,7 +18,11 @@ export const DescriptionPeople = props => {
 						<Image
 							className=" w-100 h-100"
 							src="https://images.unsplash.com/photo-1518331647614-7a1f04cd34cf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80"
-							style={{ width: "100px", height: "100px" }}
+							style={{
+								width: "100px",
+								height: "100px",
+								boxShadow: "8px 6px 15px #9e9e9e"
+							}}
 							rounded
 						/>
 					</Col>
@@ -80,15 +83,11 @@ export const DescriptionPeople = props => {
 				</div>
 				<br />
 				<div className="col text-center">
-					<Link to="/">
-						<button className="btn btn-primary">Back home</button>
+					<Link to="/people/home">
+						<button className="btn btn-primary">Back People</button>
 					</Link>
 				</div>
 			</Container>
 		</div>
 	);
-};
-
-DescriptionPeople.propTypes = {
-	info: PropTypes.string
 };

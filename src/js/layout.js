@@ -7,7 +7,7 @@ import { Context } from "./store/appContext";
 import { DescriptionPlanets } from "./views/descriptionPlanets";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { Menu } from "./component/navbar";
 import { People } from "./component/people";
 import { Planets } from "./component/planets";
 import { Footer } from "./component/footer";
@@ -26,7 +26,7 @@ const Layout = () => {
 	return (
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
-				<Navbar />
+				<Menu />
 				<Switch>
 					<Route exact path="/">
 						<Home />
