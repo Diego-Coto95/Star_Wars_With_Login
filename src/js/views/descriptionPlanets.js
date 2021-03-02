@@ -12,7 +12,7 @@ export const DescriptionPlanets = () => {
 
 	return (
 		<div className="mt-4">
-			<Container>
+			<Container fluid>
 				<Row>
 					<Col xs={6} md={5}>
 						<Image

@@ -52,7 +52,7 @@ export const Planets = props => {
 				})}
 			</div>
 			<div>
-				<Link to="/">
+				<Link to="/Menu">
 					<button className="btn btn-primary mt-4" style={{ top: "15" }}>
 						Back home
 					</button>

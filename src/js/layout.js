@@ -7,6 +7,7 @@ import { Context } from "./store/appContext";
 import { DescriptionPlanets } from "./views/descriptionPlanets";
 import injectContext from "./store/appContext";
 
+import { Main } from "./component/login";
 import { Menu } from "./component/navbar";
 import { People } from "./component/people";
 import { Planets } from "./component/planets";
@@ -26,25 +27,36 @@ const Layout = () => {
 	return (
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
-				<Menu />
 				<Switch>
 					<Route exact path="/">
+						<Main />
+					</Route>
+					<Route exact path="/Menu">
+						<Menu />
 						<Home />
+						<Footer />
 					</Route>
 					<Route exact path="/people/:theid">
+						<Menu />
 						<People info={store.people} />
+						<Footer />
 					</Route>
 					<Route exact path="/descriptionPeople/:theid">
+						<Menu />
 						<DescriptionPeople />
+						<Footer />
 					</Route>
 					<Route exact path="/planets/:theid">
+						<Menu />
 						<Planets info={store.planets} />
+						<Footer />
 					</Route>
 					<Route exact path="/descriptionPlanets/:theid">
+						<Menu />
 						<DescriptionPlanets />
+						<Footer />
 					</Route>
 				</Switch>
-				<Footer />
 			</BrowserRouter>
 		</div>
 	);

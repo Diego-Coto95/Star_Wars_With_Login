@@ -10,11 +10,11 @@ export const People = props => {
 	const [searchItem, setSearch] = useState();
 
 	return (
-		<Container className="container" fluid>
+		<Container>
 			<Row>
 				{props.info.map((element, index) => {
 					return (
-						<Col md={4} className="mt-1 mb-1" key={index}>
+						<Col md={4} className="mt-2 mb-1" key={index}>
 							<Card>
 								<Card.Img
 									variant="top"

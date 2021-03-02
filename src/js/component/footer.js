@@ -6,5 +6,10 @@ export const Footer = () => (
 		<p>
 			FOLLOW ME <i className="far fa-thumbs-up" /> by <a href="https://twitter.com/JuanDiegoCoto1">DIEGO COTO</a>
 		</p>
+		<div>
+			<Link to="/">
+				<button className="btn btn-primary">Log out</button>
+			</Link>
+		</div>
 	</footer>
 );

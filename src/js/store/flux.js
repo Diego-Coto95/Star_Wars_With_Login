@@ -10,17 +10,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Use getActions to call a function within a fuction
 			loadPeople: async () => {
-				const url = "https://swapi.dev/api/people/";
+				const url = "https://3000-indigo-duck-4s99l8l5.ws-us03.gitpod.io/people";
 				const response = await fetch(url);
 				const info = await response.json();
-				setStore({ people: info.results });
+				setStore({ people: info });
 			},
 
 			loadPlanet: async () => {
-				const url = "https://swapi.dev/api/planets/";
+				const url = "https://3000-indigo-duck-4s99l8l5.ws-us03.gitpod.io/planets";
 				const response = await fetch(url);
 				const info = await response.json();
-				setStore({ planets: info.results });
+				setStore({ planets: info });
 			},
 			addFavorite: (name, type) => {
 				const store = getStore();
