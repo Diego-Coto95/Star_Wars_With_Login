@@ -11,7 +11,7 @@ export const DescriptionPeople = () => {
 	const element = store.people[params.theid];
 
 	return (
-		<div className="mt-5 text-center">
+		<div className="container mt-5 text-center">
 			<Container>
 				<Row>
 					<Col xs={6} md={5}>

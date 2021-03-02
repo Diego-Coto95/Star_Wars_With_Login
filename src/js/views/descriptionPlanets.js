@@ -11,7 +11,7 @@ export const DescriptionPlanets = () => {
 	const element = store.planets[params.theid];
 
 	return (
-		<div className="mt-4">
+		<div className="container mt-4">
 			<Container fluid>
 				<Row>
 					<Col xs={6} md={5}>
