@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Form, Col, Row, Button, Card, Accordion } from "react-bootstrap";
+import { Form, Col, Row, Button, Card, Accordion, footer } from "react-bootstrap";
 
 export const Main = () => {
 	return (
