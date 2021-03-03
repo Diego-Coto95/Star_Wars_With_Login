@@ -1,8 +1,71 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Form, Col, Row, Button, Card, Accordion, footer } from "react-bootstrap";
 
 export const Main = () => {
+	// const [email, setEmail] = useState("");
+	// const [pass, setPass] = useState("");
+
+	// //**********************************************LOG  IN**********************************************//
+	// const handleSubmit = e => {
+	// 	e.preventDefault();
+	// 	if (email === "" || pass === "") {
+	// 		alert("correo y contraseña son requeridos");
+	// 	}
+	// 	console.log(email, pass);
+
+	// 	// FETCH
+	// 	const data = { email: email, password: pass };
+
+	// 	fetch("https://3000-emerald-jellyfish-qyn0ga41.ws-us03.gitpod.io/login", {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json"
+	// 		},
+	// 		body: JSON.stringify(data)
+	// 	})
+	// 		.then(response => response.json())
+	// 		.then(data => {
+	// 			console.log("Success:", data);
+	// 			sessionStorage.setItem("u_token", data.token);
+	// 			setRedirect(true);
+	// 		})
+	// 		.catch(error => {
+	// 			console.error("Error:", error);
+	// 		});
+
+	// 	// setRedirect(true);
+	// };
+	// //**********************************************SIGN iN**********************************************//
+	// const handleSubmit = e => {
+	// 	e.preventDefault();
+	// 	if (email === "" || pass === "") {
+	// 		alert("correo y contraseña son requeridos");
+	// 	}
+	// 	console.log(email, pass);
+
+	// 	// FETCH
+	// 	const data = { email: email, password: pass };
+
+	// 	fetch("https://3000-emerald-jellyfish-qyn0ga41.ws-us03.gitpod.io/register", {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json"
+	// 		},
+	// 		body: JSON.stringify(data)
+	// 	})
+	// 		.then(response => response.json())
+	// 		.then(data => {
+	// 			console.log("Success:", data);
+	// 			setRedirect(true);
+	// 		})
+	// 		.catch(error => {
+	// 			console.error("Error:", error);
+	// 		});
+
+	// 	// setRedirect(true);
+	// };
+
 	return (
 		<div className="container log text-center d-flex justify-content-center " fluid>
 			<Card style={{ width: "18rem" }} className="w-50 h-50 mt-3">
