@@ -1,92 +1,41 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Form, Col, Row, Button, Card, Accordion, footer } from "react-bootstrap";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Main = () => {
+	const { actions, store } = useContext(Context);
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
-	//const [redirect, setRedirect] = useState(false);
+	const [redirect, setRedirect] = useState(false);
 
 	//**********************************************LOG  IN**********************************************//
-	const handleSubmitlogin = e => {
+	const handleSubmitLogin = e => {
 		e.preventDefault();
 		if (email === "" || pass === "") {
 			alert("Correo y contraseña son requeridos");
+		} else {
+			console.log(email, pass);
+			actions.validateLogin(email, pass);
 		}
-		console.log(email, pass);
-
-		// FETCH
-		const data = { email: email, password: pass }; // Objeto que me manejara los fields que se van a ingresar en el register y login
-
-		fetch("https://3000-indigo-duck-4s99l8l5.ws-us03.gitpod.io/login", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json" //Lo que se va a enviar es json, por eso se pone el header
-			},
-			body: JSON.stringify(data) //Convierte todo a un String , se envia como stringfy porque en el back end, se recibe como "email", "password"
-		})
-			.then(response => response.json())
-			.then(data => {
-				console.log("Success:", data); //imprime la data, si se registro o no se registro
-				sessionStorage.setItem("u_token", data.token);
-				//setRedirect(true);
-			})
-			.catch(error => {
-				console.error("Error:", error); //Cualquier error que pueda ocurrir
-			});
-
-		// setRedirect(true);
 	};
 	// //**********************************************SIGN iN**********************************************//
 	const handleSubmitRegister = e => {
 		e.preventDefault();
 		if (email === "" || pass === "") {
 			alert("Correo y contraseña son requeridos");
+		} else {
+			console.log(email, pass);
+			actions.validateRegister(email, pass);
+			setEmail;
 		}
-		console.log(email, pass);
-
-		// FETCH
-		const data = { email: email, password: pass };
-
-		fetch("https://3000-indigo-duck-4s99l8l5.ws-us03.gitpod.io/register", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(data)
-		})
-			.then(response => response.json())
-			.then(data => {
-				console.log("Success:", data);
-				//setRedirect(true);
-			})
-			.catch(error => {
-				console.error("Error:", error);
-			});
-
-		// setRedirect(true);
 	};
 
-	const testPrivado = () => {
-		fetch("https://3000-indigo-duck-4s99l8l5.ws-us03.gitpod.io/profile", {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: "Bearer " + sessionStorage.getItem("u_token")
-			}
-			// body: JSON.stringify(data)
-		})
-			.then(response => response.json())
-			.then(data => {
-				console.log("Success:", data);
-				// sessionStorage.setItem("u_token", data.token);
-				// setRedirect(true);
-			})
-			.catch(error => {
-				console.error("Error:", error);
-			});
-	};
+	// const testPrivado = () => {
+	// 	actions.validateLogin(email, pass);
+	// 	//actions.validateToken();
+	// };
 
 	return (
 		<div className="container log text-center d-flex justify-content-center " fluid>
@@ -129,16 +78,14 @@ export const Main = () => {
 															/>
 														</Form.Group>
 													</Form.Row>
-													{/* <Link to="/Menu"> */}
 													<Button
 														variant="primary"
 														type="submit"
-														onClick={() => testPrivado()}>
+														onClick={e => handleSubmitLogin(e)}>
 														Log in
 													</Button>
-													{/* </Link> */}
 												</Form>
-												{/* {redirect ? <Redirect to="/login" /> : ""} */}
+												{store.boolean ? <Redirect to="/Menu" /> : ""}
 											</div>
 										</Card.Body>
 									</Accordion.Collapse>
@@ -146,7 +93,7 @@ export const Main = () => {
 								<Card>
 									<Card.Header>
 										<Accordion.Toggle as={Button} variant="link" eventKey="1">
-											Sign in!
+											Sign up!
 										</Accordion.Toggle>
 									</Card.Header>
 									<Accordion.Collapse eventKey="1">
@@ -169,11 +116,15 @@ export const Main = () => {
 																type="password"
 																placeholder="Password"
 																onChange={e => setPass(e.target.value)}
+																value={pass}
 															/>
 														</Form.Group>
 													</Form.Row>
-													<Button variant="primary" type="submit">
-														Sign in
+													<Button
+														variant="primary"
+														type="submit"
+														onClick={e => handleSubmitRegister(e)}>
+														Sign up
 													</Button>
 												</Form>
 												{/* {redirect ? <Redirect to="/login" /> : ""} */}
